@@ -35,7 +35,7 @@ in
       monitor = ",preferred,auto,auto";
 
       "$terminal" = "alacritty";
-      "$mod" = "ALT";
+      "$mod" = "SUPER";
       "$menu" = "rofi -show drun";
 
       env = [
@@ -44,7 +44,7 @@ in
       ];
 
       input = {
-        kb_layout = "us";
+        kb_layout = "latam";
         follow_mouse = 1;
         sensitivity = 0;
         touchpad = {
