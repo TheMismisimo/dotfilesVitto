@@ -23,11 +23,17 @@ in
     R
     ripgrep
     unzip
+    warp-terminal
 
     latexPackages
     texlab
     gnumake
     zathura
+
+    dbeaver-bin     
+    php             
+    nixd
+    alejandra
   ];
 
   programs.zed-editor = {

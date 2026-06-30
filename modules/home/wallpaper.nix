@@ -20,6 +20,7 @@ let
     pkgs.gsettings-desktop-schemas
     pkgs.hicolor-icon-theme
     pkgs.glib
+    pkgs.webp-pixbuf-loader
   ];
 
   wallpaperPickerScript = pkgs.writeText "gtk-wallpaper-picker.py" ''

@@ -32,7 +32,7 @@ in
       '';
 
     settings = {
-      monitor = ",preferred,auto,auto";
+      monitor = "eDP-1, 1920x1080@144, 0x0, 1.0";
 
       "$terminal" = "alacritty";
       "$mod" = "SUPER";
@@ -41,6 +41,7 @@ in
       env = [
         "XCURSOR_SIZE,24"
         "XCURSOR_THEME,Bibata-Modern-Classic"
+        "NIXOS_OZONE_WL,1"
       ];
 
       input = {

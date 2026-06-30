@@ -121,8 +121,9 @@ in
     libsecret
     gcr_4
     inputs.sddm-theme.packages.${pkgs.stdenv.hostPlatform.system}.default
+    nixd
   ];
-
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   programs.hyprland = lib.mkIf features.desktop.enable {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
