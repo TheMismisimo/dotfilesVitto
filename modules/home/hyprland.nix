@@ -48,7 +48,7 @@ in
         follow_mouse = 1;
         sensitivity = 0;
         touchpad = {
-          natural_scroll = false;
+          natural_scroll = true;
         };
       } // lib.optionalAttrs (cfg.tabletOutput != null) {
         tablet.output = cfg.tabletOutput;
