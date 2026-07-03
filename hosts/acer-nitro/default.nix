@@ -74,7 +74,7 @@ in
       nvidiaBusId = "PCI:1:0:0";
     };
   };
-
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   system.stateVersion = "25.11";
 }

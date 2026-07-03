@@ -389,7 +389,7 @@ in
     (writeShellScriptBin "set-wallpaper" ''
       WALLPAPER="$1"
       TRANSITION="''${2:-grow}"
-      DEFAULT_WALLPAPER="${../../assets/avatar.png}"
+      DEFAULT_WALLPAPER="${../../../assets/avatar.png}"
 
       # If no argument given, restore last used wallpaper or fall back to redforest.
       if [ -z "$WALLPAPER" ]; then
@@ -483,7 +483,7 @@ in
   home.file."Pictures/wallpapers/.keep".text = "";
 
   home.activation.bootstrapWallpaperState = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-    fallback_wallpaper="${../../assets/avatar.png}"
+    fallback_wallpaper="${../../../assets/avatar.png}"
 
     $DRY_RUN_CMD mkdir -p "$HOME/.cache"
 

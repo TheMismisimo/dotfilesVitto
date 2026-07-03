@@ -41,7 +41,7 @@
   '';
 
   home.activation.bootstrapMatugenColors = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-    fallback_wallpaper="${../../assets/avatar.png}"
+    fallback_wallpaper="${../../../assets/avatar.png}"
     missing_matugen_output=0
 
     for output in \

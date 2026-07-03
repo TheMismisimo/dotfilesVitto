@@ -9,24 +9,28 @@
     ./modules/home/profile.nix
     ./modules/home/apps.nix
     ./modules/home/development.nix
-    ./modules/home/terminal.nix
-    ./modules/home/scripts.nix
-    ./modules/home/opencode-waybar.nix
-    ./modules/home/hyprland.nix
-    ./modules/home/wallpaper.nix
-    ./modules/home/zsh.nix
-    ./modules/home/matugen.nix
-    ./modules/home/waybar.nix
-    ./modules/home/network.nix
-    ./modules/home/hyprlock.nix
-    ./modules/home/hypridle.nix
-    ./modules/home/screenshot.nix
-    ./modules/home/rofi.nix
-    ./modules/home/eww.nix
-    ./modules/home/mako.nix
-    ./modules/home/keyring.nix
-    ./modules/home/cliphist.nix
     ./modules/home/gtk.nix
-    ./modules/home/yazi.nix
+
+    ./modules/home/wall-mng/wallpaper.nix
+    ./modules/home/wall-mng/matugen.nix
+
+    ./modules/home/wm/hyprland.nix
+    ./modules/home/wm/hyprlock.nix
+    ./modules/home/wm/hypridle.nix
+    ./modules/home/wm/waybar.nix
+    ./modules/home/wm/eww.nix
+    ./modules/home/wm/rofi.nix
+    ./modules/home/wm/mako.nix
+    ./modules/home/wm/screenshot.nix
+
+    ./modules/home/shell/terminal.nix
+    ./modules/home/shell/zsh.nix
+    ./modules/home/shell/yazi.nix
+    ./modules/home/shell/scripts.nix
+
+    ./modules/home/services/cliphist.nix
+    ./modules/home/services/keyring.nix
+    ./modules/home/services/network.nix
+    ./modules/home/services/opencode-waybar.nix
   ];
 }
