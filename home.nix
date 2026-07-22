@@ -10,6 +10,7 @@
     ./modules/home/apps.nix
     ./modules/home/development.nix
     ./modules/home/gtk.nix
+    ./modules/home/ssh.nix
 
     ./modules/home/wall-mng/wallpaper.nix
     ./modules/home/wall-mng/matugen.nix

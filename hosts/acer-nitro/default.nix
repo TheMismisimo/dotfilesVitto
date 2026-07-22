@@ -6,6 +6,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
+    ./wireguard.nix
     ../../modules/system/common.nix
     ../../modules/system/bluetooth.nix
   ];
