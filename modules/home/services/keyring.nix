@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   # GNOME Keyring for secrets/pkcs11 — auto-unlocked by SDDM via PAM on login
-  wayland.windowManager.hyprland.settings."exec-once" = [
+  local.machine.execOnce = [
     "gnome-keyring-daemon --start --components=secrets,pkcs11"
   ];
 

@@ -8,9 +8,6 @@
   local.machine = {
     tabletOutput = "DP-10";
     bindF4MicMute = true;
+    execOnce = [ "blueman-applet" ];
   };
-
-  wayland.windowManager.hyprland.settings.exec-once = [
-    "blueman-applet"
-  ];
 }

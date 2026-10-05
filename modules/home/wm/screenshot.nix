@@ -10,7 +10,7 @@
   # Screenshots directory
   home.file."Pictures/screenshots/.keep".text = "";
 
-  wayland.windowManager.hyprland.settings.bind = [
+  local.machine.hyprlandBinds = [
     # Full screenshot → save to file + notify
     ", Print, exec, FILE=~/Pictures/screenshots/$(date +%Y%m%d_%H%M%S).png && grim $FILE && notify-send -i $FILE '󰹑 Screenshot' 'Saved to Pictures/screenshots'"
 

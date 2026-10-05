@@ -10,6 +10,7 @@ in
     ./user.nix
     ./audio.nix
     ./sddm.nix
+    ./steam.nix
   ];
 
   # Boot splash

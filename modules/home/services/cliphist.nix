@@ -45,14 +45,12 @@
     '')
   ];
 
-  wayland.windowManager.hyprland.settings = {
-    exec-once = [
+  local.machine.execOnce = [
       "wl-paste --type text  --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
     ];
 
-    bind = [
-      "$mod SHIFT, V, exec, rofi-cliphist"
-    ];
-  };
+  local.machine.hyprlandBinds = [
+    "$mod SHIFT, V, exec, rofi-cliphist"
+  ];
 }

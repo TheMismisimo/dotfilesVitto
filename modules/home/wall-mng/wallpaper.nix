@@ -23,6 +23,17 @@ let
     pkgs.webp-pixbuf-loader
   ];
 
+  # gdk-pixbuf only discovers loaders via a single loaders.cache file. Neither
+  # gdk-pixbuf (built-in loaders) nor webp-pixbuf-loader alone ship a cache that
+  # knows about the webp module, so we merge both into one for the picker.
+  wallpaperPickerLoadersCache = pkgs.runCommand "gtk-wallpaper-picker-gdk-pixbuf-loaders.cache" { } ''
+    mkdir -p "$out"
+    cat \
+      ${pkgs.gdk-pixbuf}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache \
+      ${pkgs.webp-pixbuf-loader}/lib/gdk-pixbuf-2.0/2.10.0/webp-loaders.cache \
+      > "$out/loaders.cache"
+  '';
+
   wallpaperPickerScript = pkgs.writeText "gtk-wallpaper-picker.py" ''
 import os
 import subprocess
@@ -380,6 +391,7 @@ in
     imagemagick
 
     (writeShellScriptBin "gtk-wallpaper-picker" ''
+      export GDK_PIXBUF_MODULE_FILE="${wallpaperPickerLoadersCache}/loaders.cache"
       export GI_TYPELIB_PATH="${wallpaperPickerTypelibPath}''${GI_TYPELIB_PATH:+:}$GI_TYPELIB_PATH"
       export XDG_DATA_DIRS="${wallpaperPickerDataDirs}''${XDG_DATA_DIRS:+:}$XDG_DATA_DIRS"
 
@@ -425,6 +437,7 @@ in
         cp "$COLOR_CACHE_DIR/hyprlock-colors.conf" "$HOME/.cache/matugen/hyprlock-colors.conf" || return 1
         cp "$COLOR_CACHE_DIR/rofi-colors.rasi" "$HOME/.cache/matugen/rofi-colors.rasi" || return 1
         cp "$COLOR_CACHE_DIR/hyprland-colors.conf" "$HOME/.cache/matugen/hyprland-colors.conf" || return 1
+        cp "$COLOR_CACHE_DIR/hyprland-colors.lua" "$HOME/.cache/matugen/hyprland-colors.lua" || return 1
         cp "$COLOR_CACHE_DIR/gtk-colors.css" "$HOME/.cache/matugen/gtk-colors.css" || return 1
         cp "$COLOR_CACHE_DIR/mako.conf" "$HOME/.config/mako/config" || return 1
         cp "$COLOR_CACHE_DIR/yazi-theme.toml" "$HOME/.config/yazi/theme.toml" || return 1
@@ -439,6 +452,7 @@ in
         cp "$HOME/.cache/matugen/hyprlock-colors.conf" "$COLOR_CACHE_DIR/hyprlock-colors.conf" || return 1
         cp "$HOME/.cache/matugen/rofi-colors.rasi" "$COLOR_CACHE_DIR/rofi-colors.rasi" || return 1
         cp "$HOME/.cache/matugen/hyprland-colors.conf" "$COLOR_CACHE_DIR/hyprland-colors.conf" || return 1
+        cp "$HOME/.cache/matugen/hyprland-colors.lua" "$COLOR_CACHE_DIR/hyprland-colors.lua" || return 1
         cp "$HOME/.cache/matugen/gtk-colors.css" "$COLOR_CACHE_DIR/gtk-colors.css" || return 1
         cp "$HOME/.config/mako/config" "$COLOR_CACHE_DIR/mako.conf" || return 1
         cp "$HOME/.config/yazi/theme.toml" "$COLOR_CACHE_DIR/yazi-theme.toml" || return 1
@@ -496,18 +510,16 @@ in
     fi
   '';
 
-  wayland.windowManager.hyprland.settings = {
-    exec-once = [
-      "awww-daemon"
-    ];
+  local.machine.execOnce = [
+    "awww-daemon"
+  ];
 
-    windowrule = [
-      "float true, match:title ^(Wallpaper Picker)$"
-      "center true, match:title ^(Wallpaper Picker)$"
-    ];
+  local.machine.hyprlandWindowRules = [
+    "float true, match:title ^(Wallpaper Picker)$"
+    "center true, match:title ^(Wallpaper Picker)$"
+  ];
 
-    bind = [
-      "$mod CTRL, W, exec, gtk-wallpaper-picker"
-    ];
-  };
+  local.machine.hyprlandBinds = [
+    "$mod CTRL, W, exec, gtk-wallpaper-picker"
+  ];
 }

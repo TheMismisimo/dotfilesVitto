@@ -15,23 +15,19 @@
         {
           publicKey = "9Drx46p9Ja7UijYiIPLwDcPv1en7io0VZyOTnEUoqno=";
           
-          # Split Tunneling: Solo encripta el tráfico hacia estas IPs
-          allowedIPs = [ 
-            "10.16.58.96/32" # Cerebro
-            "10.16.58.97/32" # Proxy Acceso
-            "10.16.58.98/32" # Proxy Checkpoint
-          ];
+          # Split Tunneling: Solo encripta el tráfico hacia la red 10.16.58.0/24
+          allowedIPs = [ "10.16.58.0/24" ];
           
           endpoint = "cd620c93c068.sn.mynetname.net:13232";
           persistentKeepalive = 30;
         }
-        {
-          publicKey = "//////////////////////////////////////////8=";
-          allowedIPs = [ "0.0.0.0/32" ]; 
-          endpoint = "cd620c93c068.sn.mynetname.net:13232";
-          persistentKeepalive = 15;
-        }
       ];
     };
+  };
+
+  systemd.services."wg-quick-wg-trabajo".serviceConfig = {
+    # El endpoint usa DDNS (mynetname.net); reintenta si el DNS aún no resuelve al bootear.
+    Restart = "on-failure";
+    RestartSec = 10;
   };
 }

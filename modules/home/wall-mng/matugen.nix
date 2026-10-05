@@ -30,6 +30,10 @@
     input_path  = "~/.config/matugen/templates/hyprland-colors.conf"
     output_path = "~/.cache/matugen/hyprland-colors.conf"
 
+    [templates.hyprland_lua]
+    input_path  = "~/.config/matugen/templates/hyprland-colors.lua"
+    output_path = "~/.cache/matugen/hyprland-colors.lua"
+
     [templates.gtk]
     input_path  = "~/.config/matugen/templates/gtk-colors.css"
     output_path = "~/.cache/matugen/gtk-colors.css"
@@ -50,6 +54,7 @@
       "$HOME/.cache/matugen/hyprlock-colors.conf" \
       "$HOME/.cache/matugen/rofi-colors.rasi" \
       "$HOME/.cache/matugen/hyprland-colors.conf" \
+      "$HOME/.cache/matugen/hyprland-colors.lua" \
       "$HOME/.cache/matugen/gtk-colors.css" \
       "$HOME/.config/mako/config" \
       "$HOME/.config/yazi/theme.toml"; do
@@ -162,6 +167,15 @@
   home.file.".config/matugen/templates/hyprland-colors.conf".text = ''
     $col_active_border   = rgba({{colors.primary.default.hex_stripped}}ee) rgba({{colors.tertiary.default.hex_stripped}}ee) 45deg
     $col_inactive_border = rgba({{colors.outline.default.hex_stripped}}aa)
+  '';
+
+  # Hyprland border color template (Lua config, loaded by hyprland.lua).
+  # Same colors as the hyprlang template above.
+  home.file.".config/matugen/templates/hyprland-colors.lua".text = ''
+    return {
+      active_border   = { colors = { "rgba({{colors.primary.default.hex_stripped}}ee)", "rgba({{colors.tertiary.default.hex_stripped}}ee)" }, angle = 45 },
+      inactive_border = "rgba({{colors.outline.default.hex_stripped}}aa)",
+    }
   '';
 
   # GTK color template (imported by gtk.css for both GTK3 and GTK4)

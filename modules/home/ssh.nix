@@ -50,7 +50,7 @@
       "droplet_servicios" = {
         Hostname = "174.138.73.97";
         User = "root"; # O el usuario que uses en DigitalOcean
-        IdentityFile = "~/.ssh/id_ed25519_do"; # Puedes separar llaves por seguridad
+        IdentityFile = "~/.ssh/id_ed25519"; # Puedes separar llaves por seguridad
       };
     };
   };

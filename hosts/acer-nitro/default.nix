@@ -30,6 +30,9 @@ in
   # Habilitar CoreCtrl y dar permisos a tu usuario
   programs.corectrl.enable = true;
   users.users.${username}.extraGroups = [ "corectrl" ];
+
+  # Steam con Proton adicional (GE-Proton).
+  local.features.steam.enable = true;
   # Optimizador automático de batería y rendimiento
   services.auto-cpufreq.enable = true;
   services.auto-cpufreq.settings = {

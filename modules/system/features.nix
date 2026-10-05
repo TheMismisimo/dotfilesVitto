@@ -43,5 +43,11 @@
       default = config.local.features.desktop.enable;
       description = "Enable GNOME Keyring and SDDM PAM unlock integration.";
     };
+
+    steam.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable Steam and extra Proton compatibility tools.";
+    };
   };
 }

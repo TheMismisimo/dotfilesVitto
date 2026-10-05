@@ -7,7 +7,7 @@ in
   config = lib.mkIf config.local.features.sddm.enable {
     services.accounts-daemon.enable = true;
     systemd.tmpfiles.rules = [
-      "L+ /var/lib/AccountsService/icons/${username} - - - - ${../../assets/avatar.png}"
+      "L+ /var/lib/AccountsService/icons/${username} - - - - ${../../assets/katakuri_avatar.png}"
     ];
 
     services.displayManager.sddm = {

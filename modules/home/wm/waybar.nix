@@ -258,8 +258,6 @@
   };
 
   # Launch waybar with Hyprland
-  wayland.windowManager.hyprland.settings = {
-    exec-once = [ "waybar" ];
-  };
+  local.machine.execOnce = [ "waybar" ];
 
 }
