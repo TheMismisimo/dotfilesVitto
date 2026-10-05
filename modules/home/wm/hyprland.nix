@@ -121,6 +121,7 @@ let
       allTokens = lib.concatMap (t: lib.filter (s: s != "") (lib.splitString " " t)) parts;
       effectTokens = builtins.filter (s: !(lib.hasPrefix "match:" s)) allTokens;
       effectFields = if effectTokens == [ ] then "" else effectsToFields (lib.concatStringsSep " " effectTokens);
+      matchTokens = builtins.filter (s: lib.hasPrefix "match:" s) allTokens;
       matchFields = lib.concatStringsSep ", " (
         lib.filter (s: s != "") (
           lib.map (t: matchToField (lib.removePrefix "match:" t)) matchTokens
